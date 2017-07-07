@@ -1,0 +1,236 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">CornerStone</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="/logout">Log Out</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-4 sidebar">
+          <!--<ul class="nav nav-sidebar">-->
+            <!--<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>-->
+            <!--<li><a href="#">Reports</a></li>-->
+            <!--<li><a href="#">Analytics</a></li>-->
+            <!--<li><a href="#">Export</a></li>-->
+          <!--</ul>-->
+          <span id="tradingview-copyright"><a ref="nofollow" target="_blank" href="http://www.tradingview.com" style="color: rgb(173, 174, 176); font-family: &quot;Trebuchet MS&quot;, Tahoma, Arial, sans-serif; font-size: 13px;">Market Quotes by <span style="color: #3BB3E4">TradingView</span></a></span>
+<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js">
+{
+  "showChart": true,
+  "locale": "en",
+  "width": "400",
+  "height": "660",
+  "plotLineColorGrowing": "#3CBC98",
+  "plotLineColorFalling": "#FF4A68",
+  "gridLineColor": "#e9e9ea",
+  "scaleFontColor": "#DADDE0",
+  "belowLineFillColorGrowing": "rgba(60, 188, 152, 0.05)",
+  "belowLineFillColorFalling": "rgba(255, 74, 104, 0.05)",
+  "symbolActiveColor": "#F2FAFE",
+  "tabs": [
+    {
+      "symbols": [
+        {
+          "s": "INDEX:SPX",
+          "d": "S&P 500"
+        },
+        {
+          "s": "INDEX:IUXX",
+          "d": "Nasdaq 100"
+        },
+        {
+          "s": "INDEX:DOWI",
+          "d": "Dow 30"
+        },
+        {
+          "s": "INDEX:NKY",
+          "d": "Nikkei 225"
+        },
+        {
+          "s": "NASDAQ:AAPL",
+          "d": "Apple"
+        },
+        {
+          "s": "NASDAQ:GOOG",
+          "d": "Google"
+        }
+      ],
+      "title": "Equities"
+    },
+    {
+      "symbols": [
+        {
+          "s": "CME_MINI:ES1!",
+          "d": "E-Mini S&P"
+        },
+        {
+          "s": "CME:E61!",
+          "d": "Euro"
+        },
+        {
+          "s": "COMEX:GC1!",
+          "d": "Gold"
+        },
+        {
+          "s": "NYMEX:CL1!",
+          "d": "Crude Oil"
+        },
+        {
+          "s": "NYMEX:NG1!",
+          "d": "Natural Gas"
+        },
+        {
+          "s": "CBOT:ZC1!",
+          "d": "Corn"
+        }
+      ],
+      "title": "Commodities"
+    },
+    {
+      "symbols": [
+        {
+          "s": "CME:GE1!",
+          "d": "Eurodollar"
+        },
+        {
+          "s": "CBOT:ZB1!",
+          "d": "T-Bond"
+        },
+        {
+          "s": "CBOT:UD1!",
+          "d": "Ultra T-Bond"
+        },
+        {
+          "s": "EUREX:GG1!",
+          "d": "Euro Bund"
+        },
+        {
+          "s": "EUREX:II1!",
+          "d": "Euro BTP"
+        },
+        {
+          "s": "EUREX:HR1!",
+          "d": "Euro BOBL"
+        }
+      ],
+      "title": "Bonds"
+    },
+    {
+      "symbols": [
+        {
+          "s": "FX:EURUSD"
+        },
+        {
+          "s": "FX:GBPUSD"
+        },
+        {
+          "s": "FX:USDJPY"
+        },
+        {
+          "s": "FX:USDCHF"
+        },
+        {
+          "s": "FX:AUDUSD"
+        },
+        {
+          "s": "FX:USDCAD"
+        }
+      ],
+      "title": "Forex"
+    }
+  ]
+}
+</script>
+<!-- TradingView Widget END -->
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-4 main">
+          <h1 class="page-header">Welcome, {{ name }}</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <a href="#">
+                <img src="\static\img\dashboard\stock-market.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              </a>
+              <h4>Stocks</h4>
+              <span class="text-muted">Selected stocks</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <a href="#">
+                <img src="\static\img\dashboard\web-sources.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              </a>
+              <h4>Sources</h4>
+              <span class="text-muted">Selected web sources</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <a href="#">
+                <img src="\static\img\dashboard\analysts.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              </a>
+              <h4>Analysts</h4>
+              <span class="text-muted">Selected analysts</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <a href="#">
+                <img src="\static\img\dashboard\portfolio.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              </a>
+              <h4>Portfolio</h4>
+              <span class="text-muted">View personal portfolio</span>
+            </div>
+          </div>
+
+          <h2 class="sub-header">Articles</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Stock Symbol</th>
+                  <th>Title</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for item in items %}
+                  <tr>
+                     <td>{{item.id}}</td>
+                     <td>{{item.stock}}</td>
+                     <td>{{item.title}}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
